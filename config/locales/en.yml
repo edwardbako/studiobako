@@ -30,3 +30,6 @@
 en:
   hello: "Hello world"
   app_name: StudioBako
+  navigation:
+    log_in: Log In
+    log_out: Log Out

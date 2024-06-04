@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+if User.count == 0
+  User.create!(
+    name: "Admin",
+    email: "admin@studiobako.ru",
+    password: "267X27CeVrib8xEXxbkVvA==",
+    password_confirmation: "267X27CeVrib8xEXxbkVvA==",
+    role: :admin,
+    confirmed_at: Time.now
+  )
+end

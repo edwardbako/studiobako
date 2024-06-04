@@ -1,0 +1,35 @@
+.container
+  .row.justify-content-center
+    .col-10.col-sm-8.col-md-6.col-lg-4.col-xl-3
+      h2
+        = t('.sign_in')
+      = form_with(model: resource, as: resource_name,
+                  url: session_path(resource_name),
+                  builder: CustomFormBuilder) do |f|
+
+        .form-floating.mb-3
+          = f.email_field :email, autofocus: true,
+                                  autocomplete: "email",
+                                  placeholder: :email
+          = f.label :email
+
+        .mb-3
+          .input-group data-controller="show-password"
+            .form-floating
+              = f.password_field :password,
+                                autocomplete: "current-password",
+                                "data-show-password-target": "input",
+                                placeholder: :password
+              = f.label :password
+            a href="#" data-action="click->show-password#toggle" class="input-group-text"
+              span
+                i.bi.bi-eye data-show-password-target="icon"
+        
+        - if devise_mapping.rememberable?
+          .mb-3.form-check
+            = f.check_box t('.remember_me'), checked: true
+
+        .actions.mb-3.text-center
+          = f.submit t('.sign_in'), class: "btn btn-primary"
+
+      = render "devise/shared/links"

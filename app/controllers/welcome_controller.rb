@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  before_action { sleep 3 }
+  # before_action { sleep У3 }
 
   def index
   end

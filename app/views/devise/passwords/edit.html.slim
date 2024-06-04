@@ -1,0 +1,46 @@
+.container
+  .row.justify-content-center
+    .col-10.col-sm-8.col-md-6.col-lg-4.col-xl-3
+      h2
+        = t('.change_your_password')
+
+      = form_with(model: resource, as: resource_name,
+                  url: password_path(resource_name),
+                  builder: CustomFormBuilder,
+                  html: { method: :put }) do |f|
+        / = render "devise/shared/error_messages", resource: resource
+
+        = f.hidden_field :reset_password_token
+        .mb-3
+          .input-group data-controller="show-password"
+            .form-floating
+              = f.password_field :password,
+                                autocomplete: "new-password",
+                                "data-show-password-target": "input",
+                                placeholder: :password
+              = f.label :password
+            a href="#" data-action="click->show-password#toggle" class="input-group-text"
+              span
+                i.bi.bi-eye data-show-password-target="icon"
+          .form-text
+            - if @minimum_password_length
+              em
+                = t('devise.shared.minimum_password_length', count: @minimum_password_length)
+
+        
+        .mb-3
+          .input-group data-controller="show-password"
+            .form-floating
+              = f.password_field :password_confirmation,
+                                autocomplete: "new-password",
+                                "data-show-password-target": "input",
+                                placeholder: :password_confirmation
+              = f.label :password_confirmation
+            a href="#" data-action="click->show-password#toggle" class="input-group-text"
+              span
+                i.bi.bi-eye data-show-password-target="icon"
+
+        .actions.mb-3.text-center
+          = f.submit t('.change_my_password'), class: "btn btn-primary"
+
+      = render "devise/shared/links"

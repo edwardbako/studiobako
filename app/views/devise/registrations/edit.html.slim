@@ -1,0 +1,91 @@
+.container 
+  .row.justify-content-center
+    .col-10.col-sm-8.col-md-6.col-lg-4.col-xl-3
+
+      h2
+        = t('.title', resource: resource_name.to_s.humanize)
+
+      = form_with(model: resource, as: resource_name,
+                  url: registration_path(resource_name),
+                  builder: CustomFormBuilder,
+                  html: { method: :put }) do |f|
+        / = render "devise/shared/error_messages", resource: resource
+        
+        .form-floating
+          = f.email_field :email, autofocus: true,
+                                  autocomplete: "email",
+                                  placeholder: :email
+          = f.label :email
+
+        .fomr-text
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            div
+              = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
+
+        .mb-3
+          .form-text
+            - if @minimum_password_length
+              br
+              em
+                = t('devise.shared.minimum_password_length', count: @minimum_password_length)
+          .form-text
+            i
+              | (
+              = t('.leave_blank_if_you_don_t_want_to_change_it')
+              | )
+          .input-group data-controller="show-password"
+            .form-floating
+              = f.password_field :password,
+                                autocomplete: "new-password",
+                                "data-show-password-target": "input",
+                                placeholder: :password
+              = f.label :password
+            a href="#" data-action="click->show-password#toggle" class="input-group-text"
+              span
+                i.bi.bi-eye data-show-password-target="icon"
+
+
+        .mb-3
+          .input-group data-controller="show-password"
+            .form-floating
+              = f.password_field :password_confirmation,
+                                autocomplete: "new-password",
+                                "data-show-password-target": "input",
+                                placeholder: :password_confirmation
+              = f.label :password_confirmation
+            a href="#" data-action="click->show-password#toggle" class="input-group-text"
+              span
+                i.bi.bi-eye data-show-password-target="icon"
+
+
+        .mb-3
+          .input-group data-controller="show-password"
+            .form-floating
+              = f.password_field :current_password,
+                                  autocomplete: "current-password",
+                                  "data-show-password-target": "input",
+                                  placeholder: :current_password
+              = f.label :current_password
+            a href="#" data-action="click->show-password#toggle" class="input-group-text"
+              span
+                i.bi.bi-eye data-show-password-target="icon"
+
+          .form-text
+            i
+              | (
+              = t('.we_need_your_current_password_to_confirm_your_changes')
+              | )
+
+        .actions.mb-3.text-center
+          = f.submit t('.update'), class: "btn btn-primary"
+      
+      hr
+      .text-center
+        h3
+          = t('.cancel_my_account')
+        .mb-2
+          = t('.unhappy')
+        .mb-3
+          = button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete, class: "btn btn-danger"
+      
+      = link_to t('devise.shared.links.back'), :back

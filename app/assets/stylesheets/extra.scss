@@ -1,0 +1,43 @@
+@import "bootstrap/scss/variables";
+
+body {
+  // * {
+  //   background-color: rgba(30, 200, 100, 0.05);
+  // }
+}
+
+.turbo-progress-bar {
+  background: linear-gradient(to right, red, blue);
+}
+
+.is-invalid+.form-label {
+  color: $danger;
+}
+
+.translation_missing {
+  background-color: rgba($danger, 0.1);
+  text-decoration: underline dotted;
+}
+
+.form-inline {
+  display: inline-block;
+}
+
+#notice {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  opacity: 90%;
+
+  // &.hidden {
+  //   visibility: hidden;
+  //   opacity: 30%;
+  //   transition: visibility 5s, opacity 10s;
+
+  // }
+}
+
+.nav-link.active {
+  font-weight: bolder;
+}

@@ -1,0 +1,15 @@
+ru:
+  hello: "Hello world"
+  app_name: СтудияБако
+  navigation:
+    log_in: Войти
+    log_out: Выйти
+    about: О Нас
+    contacts: Контакты
+    projects: Проекты
+    products: Продукты
+  welcome:
+    index:
+      main-heading: Создаем веб-сервисы и мобильные приложения для бизнеса
+      main-subheading: Открываем новые возможности, улучшаем качество и ускоряем ваши процессы
+      action: Начать проект

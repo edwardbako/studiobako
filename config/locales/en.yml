@@ -37,3 +37,8 @@ en:
     contacts: Contacts
     projects: Projects
     products: Products
+  welcome:
+    index:
+      main-heading: We create web-services and mobile apps for business
+      main-subheading: We open up new opportunities, improve quality and speed up your processes
+      action: Start a project

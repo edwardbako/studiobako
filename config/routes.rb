@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get "about" => "welcome#about"
   get "contacts" => "welcome#contacts"
 
+  resource :application, only: [:new, :create], controller: :leads
+
 end

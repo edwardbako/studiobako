@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
 
-  enum role: [:admin, :user]
+  enum :role, [:admin, :user]
 
   def full_name
     "#{surname} #{name} #{patronymic}"

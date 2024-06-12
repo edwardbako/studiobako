@@ -1,0 +1,7 @@
+.container 
+  .row
+    .col-md-8.col
+      h1.mb-3 = t(".header")
+      h4.mb-3 = t(".subheader").html_safe
+
+      == render "form", lead: @lead

@@ -42,3 +42,7 @@ en:
       main-heading: We create web-services and mobile apps for business
       main-subheading: We open up new opportunities, improve quality and speed up your processes
       action: Start a project
+  leads:
+    new:
+      header: Contact us about project
+    success: Thanks! Application successfully sent. We will contact you soon.

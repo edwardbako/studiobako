@@ -1,0 +1,88 @@
+= form_with(model: lead,
+            url: application_path,
+            builder: CustomFormBuilder) do |form|
+  / - if lead.errors.any?
+  /   div style="color: red"
+  /     h2 = "#{pluralize(lead.errors.count, "error")} prohibited this lead from being saved:"
+  /     ul
+  /       - lead.errors.each do |error|
+  /         li = error.full_message
+  .tabs {data-controller="tabs" 
+        data-tabs-id-value=(params["tab"] || "description")
+        data-tabs-disabled-class="disabled" 
+        data-tabs-hidden-class="d-none"}
+    = hidden_field_tag "tab", "", data: {tabs_target: "param"}
+    = link_to t(".description"), "#description",
+              class: "btn btn-link rounded-pill",
+              data: {action: "tabs#toggle", tabs_target: "links"}
+    '
+    = t("OR")
+    '
+    = link_to t(".brief"), "#brief",
+              class: "btn btn-link rounded-pill",
+              data: {action: "tabs#toggle", tabs_target: "links" }
+
+    #description data-tabs-target="tabs"
+      .form-floating.mb-3
+        = form.text_area :description, placeholder: true
+        = form.label :description
+
+    #brief.d-none data-tabs-target="tabs"
+      / .form-floating.mb-3
+      /   = form.text_area :industry, placeholder: true
+      /   = form.label :industry do
+      /     - t(".industry").each do |s|
+      /       = s
+      /       br
+
+      - [:industry, :task, :solution, :expectations, :budget].each do |question|
+        .form-floating.mb-3
+          = form.text_area question, placeholder: true
+          = form.label question do
+            - t(".#{question}").each do |s|
+              = s
+              br
+
+      / .form-floating.mb-3
+      /   = form.text_area :solution, placeholder: true
+      /   = form.label :solution do
+      /     - t(".solution").each do |s|
+      /       = s 
+      /       br
+
+      / .form-floating.mb-3 
+      /   = form.text_area :expectations, placeholder: true
+      /   = form.label :expectations do
+      /     - t(".expectations").each do |s|
+      /       = s
+      /       br
+
+      / .form-floating.mb-3
+      /   = form.text_area :budget, placeholder: true
+      /   = form.label :budget do
+      /     - t(".budget").each do |s|
+      /       = s
+
+  .row
+    .col-6
+      .form-floating.mb-3
+        = form.text_field :name, placeholder: true
+        = form.label :name
+
+    .col-6
+      .form-floating.mb-3
+        = form.text_field :company, placeholder: true
+        = form.label :company
+
+    .col-6
+      .form-floating.mb-3
+        = form.email_field :email, placeholder: true
+        = form.label :email
+
+    .col-6
+      .form-floating.mb-3
+        = form.phone_field :phone, placeholder: true
+        = form.label :phone
+
+  .actions.mb-3
+    = form.submit class: "btn btn-danger rounded-pill"

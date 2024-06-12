@@ -1,0 +1,21 @@
+ru:
+  activerecord:
+    models:
+      lead:
+        one: Заявка
+        few: Заявки
+        many: Заявок
+        other: Заявку
+    attributes:
+      lead:
+        name: Имя
+        company: Компания
+        email: E-mail
+        phone: Телефон
+        description: Описание
+        source: Источник
+        industry: Отрасль
+        task: Задача
+        solution: Решени
+        expectations: Ожидания
+        budget: Бюджет

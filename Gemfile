@@ -74,6 +74,16 @@ group :development do
   # gem "spring"
 
   gem "letter_opener"
+
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  # gem 'capistrano-rvm'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-nodenv'
+  gem 'capistrano-yarn'
+  gem 'capistrano-sidekiq'
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
 end
 
 group :test do

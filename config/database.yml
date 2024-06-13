@@ -83,5 +83,7 @@ test:
 production:
   <<: *default
   database: main_production
-  username: main
-  password: <%= ENV["MAIN_DATABASE_PASSWORD"] %>
+  username: 
+    <%= Rails.application.credentials.dig(:database, :production, :username) %>
+  password:
+    <%= Rails.application.credentials.dig(:database, :production, :password) %>

@@ -82,8 +82,8 @@ test:
 #
 production:
   <<: *default
-  database: main_production
+  database: studiobako_production
   username: 
-    <%= Rails.application.credentials.dig(:database, :production, :username) %>
+    <%= Rails.application.credentials.dig(:postgresql, :production, :username) %>
   password:
-    <%= Rails.application.credentials.dig(:database, :production, :password) %>
+    <%= Rails.application.credentials.dig(:postgresql, :production, :password) %>
